@@ -1,0 +1,12 @@
+---
+zk:
+  children:
+    # localhost:
+    zk_vms:
+    zk_kvm_hosts:
+
+zk_vms:
+  children:
+    infra:
+    k8s-prod:
+    k8s-dev:
