@@ -1,0 +1,6 @@
+---
+collections:
+  - name: https://github.com/karlivory/ansible-zfs-kvm
+    type: git
+    version: main
+

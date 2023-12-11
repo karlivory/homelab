@@ -1,0 +1,16 @@
+---
+- hosts: zk
+  gather_facts: false
+  roles:
+    - karlivory.zk.provision
+  tags: [zk]
+
+- hosts: all
+  roles:
+    - common
+  tags: [common]
+
+- hosts: k8s-prod-workers
+  roles:
+    - k8s-worker
+  tags: [k8s]
