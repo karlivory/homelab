@@ -1,4 +1,12 @@
 ingresses:
+  - name: argocd-ingress
+    namespace: argocd
+    host: argocd.homelab.karlivory.dev
+    externalDnsTarget: ingress1.homelab.karlivory.dev
+    ingressClassName: ingress1
+    service:
+      name: argocd-server
+      port: 80
   - name: grafana-ingress
     namespace: kube-prometheus-stack
     host: grafana.homelab.karlivory.dev
