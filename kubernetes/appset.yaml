@@ -34,4 +34,20 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - ServerSideApply=true
-      ignoreDifferences: []
+      # diff annoyances will be fixed
+      # https://github.com/argoproj/argo-cd/issues/11143#issuecomment-1910746490
+      ignoreDifferences:
+        - group: apps
+          kind: StatefulSet
+          jqPathExpressions:
+            - .spec.volumeClaimTemplates[].apiVersion
+            - .spec.volumeClaimTemplates[].kind
+        - group: monitoring.grafana.com
+          kind: PodLogs
+          namespace: loki
+          jqPathExpressions:
+            - .spec.relabelings[]?.action
+            - .spec.relabelings[]?.sourceLabels
+            - .spec.relabelings[]?.replacement
+
+
