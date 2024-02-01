@@ -1,0 +1,50 @@
+---
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: homelab
+spec:
+  k0s:
+    version: 1.29.1+k0s.0
+    config:
+      spec:
+        network:
+          nodeLocalLoadBalancing:
+            enabled: true
+            type: EnvoyProxy
+        # TODO: these controller args make k0sctl hang on fresh install with "waiting for node to become ready", why?
+        # controllerManager:
+        #   extraArgs:
+        #     # https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaulttolerationseconds
+        #     default-not-ready-toleration-seconds: "180"
+        #     default-unreachable-toleration-seconds: "60"
+  hosts:
+  - role: controller
+    ssh:
+      address: 10.5.150.1 # k8s-prod-controller1
+      user: root
+  - role: controller
+    ssh:
+      address: 10.5.150.2 # k8s-prod-controller2
+      user: root
+  - role: controller
+    ssh:
+      address: 10.5.150.3 # k8s-prod-controller3
+      user: root
+  - role: worker
+    ssh:
+      address: 10.5.150.11 # k8s-prod-worker1
+      user: root
+  - role: worker
+    ssh:
+      address: 10.5.150.12 # k8s-prod-worker2
+      user: root
+  - role: worker
+    ssh:
+      address: 10.5.150.13 # k8s-prod-worker3
+      user: root
+  - role: worker
+    ssh:
+      address: 10.5.150.14 # k8s-prod-worker4
+      user: root
+

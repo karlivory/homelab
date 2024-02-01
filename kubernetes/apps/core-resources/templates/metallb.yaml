@@ -1,0 +1,19 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: address-pool
+  namespace: metallb
+spec:
+  addresses:
+    - 10.5.150.50-10.5.150.100
+    - 10.5.150.101/32 # ingress1
+    - 10.5.150.102/32 # ingress2
+
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2advertisement
+  namespace: metallb
+

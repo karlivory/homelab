@@ -1,0 +1,11 @@
+---
+apiVersion: v2
+name: ingress2
+version: 0.1.1
+
+dependencies:
+  - name: ingress-nginx
+    repository: https://kubernetes.github.io/ingress-nginx
+    version: v4.9.1
+    alias: ingress2
+

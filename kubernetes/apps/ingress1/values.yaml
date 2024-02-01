@@ -1,0 +1,16 @@
+---
+ingress1:
+  controller:
+    extraArgs:
+      default-ssl-certificate: cert-manager/wildcard-tls
+      enable-ssl-passthrough: true
+    ingressClassResource:
+      name: ingress1
+      default: true
+    service:
+      loadBalancerIP: "10.5.150.101"
+    resources:
+      requests:
+        cpu: 300m
+        memory: 300Mi
+    replicaCount: 3

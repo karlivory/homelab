@@ -1,0 +1,19 @@
+---
+external-dns:
+  provider: cloudflare
+  interval: "3s"
+  txtPrefix: "external-dns-"
+  txtOwnerId: k8s
+  domainFilters: ["homelab.karlivory.dev"]
+  extraArgs:
+    - --source=ingress
+    - --domain-filter=homelab.karlivory.dev
+    - --zone-id-filter=ff2772ce1e55838aafe9abff0d38cb6b
+    - --cloudflare-dns-records-per-page=5000
+  env:
+    - name: CF_API_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: cloudflare-api-token-secret
+          key: api-token
+

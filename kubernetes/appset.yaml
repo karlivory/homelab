@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/karlivory/homelab.git
+      revision: HEAD
+      directories:
+      - path: kubernetes/apps/*
+  template:
+    metadata:
+      name: "{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/karlivory/homelab.git
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+          - "{{path}}/values.yaml"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - ServerSideApply=true
+      ignoreDifferences: []

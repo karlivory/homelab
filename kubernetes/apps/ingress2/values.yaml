@@ -1,0 +1,18 @@
+---
+ingress2:
+  controller:
+    extraArgs:
+      default-ssl-certificate: cert-manager/wildcard-tls
+      enable-ssl-passthrough: true
+    ingressClassResource:
+      name: ingress2
+      default: false
+    service:
+      loadBalancerIP: "10.5.150.102"
+      annotations:
+        metallb.universe.tf/allow-shared-ip: "ingress2-ip"
+    resources:
+      requests:
+        cpu: 300m
+        memory: 300Mi
+    replicaCount: 3

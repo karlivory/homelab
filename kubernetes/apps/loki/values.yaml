@@ -1,0 +1,18 @@
+---
+loki:
+  minio:
+    enabled: true
+  loki:
+    auth_enabled: false
+  write:
+    persistence:
+      size: 2Gi
+  read:
+    persistence:
+      size: 2Gi
+  backend:
+    persistence:
+      size: 2Gi
+  singlebinary:
+    persistence:
+      size: 2Gi
