@@ -15,52 +15,14 @@ spec:
         cidr: 0.0.0.0/0
         except:
         - 10.5.0.0/16
+  - to:
+    - ipBlock:
+        cidr: 10.5.150.1/32
+    - ipBlock:
+        cidr: 10.5.150.2/32
+    - ipBlock:
+        cidr: 10.5.150.3/32
+    ports:
+    - port: 6443
+      protocol: TCP
 {{- end }}
-
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-argocd-controlplane
-  namespace: argocd
-spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-application-controller
-  policyTypes:
-  - Egress
-  egress:
-  - to:
-    - ipBlock:
-        cidr: 10.5.150.1/32
-    - ipBlock:
-        cidr: 10.5.150.2/32
-    - ipBlock:
-        cidr: 10.5.150.3/32
-  - ports:
-    - port: 6443
-      protocol: TCP
-
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: longhorn-driver-allow-controlplane
-  namespace: longhorn
-spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: longhorn-driver-deployer
-  policyTypes:
-  - Egress
-  egress:
-  - to:
-    - ipBlock:
-        cidr: 10.5.150.1/32
-    - ipBlock:
-        cidr: 10.5.150.2/32
-    - ipBlock:
-        cidr: 10.5.150.3/32
-  - ports:
-    - port: 6443
-      protocol: TCP
