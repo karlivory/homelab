@@ -9,10 +9,6 @@ repoServer:
   replicas: 2
 applicationSet:
   replicaCount: 2
-configs:
-  params:
-    # tls is handled by ingress controller
-    server.insecure: true
 
 argocd-as-dependency:
   redis-ha:
@@ -25,7 +21,3 @@ argocd-as-dependency:
     replicas: 2
   applicationSet:
     replicaCount: 2
-  configs:
-    params:
-      # tls is handled by ingress controller
-      server.insecure: true
