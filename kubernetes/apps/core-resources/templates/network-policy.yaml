@@ -46,7 +46,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: longhorn-driver-allow-controlplane
-  namespace: argocd
+  namespace: longhorn
 spec:
   podSelector:
     matchLabels:
