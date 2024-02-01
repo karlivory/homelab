@@ -19,12 +19,12 @@ ingresses:
 # kubectl get ns -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | awk '{print "  - "$0}'
 namespaces:
   - argocd
-  - bind9
   - cert-manager
   - core-resources
   - default
   - external-dns
   - ingress1
+  - ingress2
   - k0s-autopilot
   - kube-node-lease
   - kube-prometheus-stack
@@ -36,3 +36,4 @@ namespaces:
   - promtail
   - reloader
   - whoami
+
