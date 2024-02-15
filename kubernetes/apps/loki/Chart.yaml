@@ -6,6 +6,6 @@ version: 0.1.1
 dependencies:
   - name: loki
     repository: https://grafana.github.io/helm-charts
-    version: 5.42.2
+    version: 5.43.1
     alias: loki
 
