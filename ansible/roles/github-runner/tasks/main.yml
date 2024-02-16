@@ -1,2 +1,35 @@
 ---
-# TODO
+- name: Ensure the github-runner user is present
+  user:
+    name: github-runner
+    comment: GitHub Actions Runner
+    shell: /bin/bash
+    create_home: true
+    state: present
+
+- name: Ensure .ssh directory exists for github-runner user
+  file:
+    path: "/home/github-runner/.ssh"
+    state: directory
+    owner: github-runner
+    group: github-runner
+    mode: '0700'
+  become: true
+
+- name: Generate SSH key for github-runner user
+  openssh_keypair:
+    path: /home/github-runner/.ssh/id_rsa
+    type: rsa
+    size: 4096
+    owner: github-runner
+    group: github-runner
+    mode: "0600"
+    force: false
+  become: true
+  become_user: github-runner
+
+# - ansible.builtin.import_role:
+#     name: MonolithProjects.github_actions_runner
+#   vars:
+#     github_account: karlivory
+#     runner_name: zk-runner

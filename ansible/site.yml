@@ -14,3 +14,8 @@
   roles:
     - k8s-worker
   tags: [k8s]
+
+- hosts: github-runner
+  roles:
+    - github-runner
+  tags: [github-runner]
