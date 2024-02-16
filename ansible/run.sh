@@ -45,6 +45,7 @@ setup_ansible() {
     # TODO: check that ansible version (ansible --version) matches the one in requirements.txt
 
     ansible-galaxy collection install -r requirements-ansible.yml
+    ansible-galaxy role install -r requirements-ansible.yml
 }
 
 
