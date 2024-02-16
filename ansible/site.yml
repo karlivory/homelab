@@ -10,7 +10,7 @@
     - common
   tags: [common]
 
-- hosts: k8s-prod-workers
+- hosts: k8s-workers
   roles:
     - k8s-worker
   tags: [k8s]
