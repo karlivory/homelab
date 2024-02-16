@@ -14,6 +14,8 @@ spec:
   template:
     metadata:
       name: "{{path.basename}}"
+      annotations:
+        argocd.argoproj.io/compare-options: ServerSideDiff=true
     spec:
       project: default
       source:
@@ -34,20 +36,3 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - ServerSideApply=true
-      # diff annoyances will be fixed
-      # https://github.com/argoproj/argo-cd/issues/11143#issuecomment-1910746490
-      ignoreDifferences:
-        - group: apps
-          kind: StatefulSet
-          jqPathExpressions:
-            - .spec.volumeClaimTemplates[].apiVersion
-            - .spec.volumeClaimTemplates[].kind
-        - group: monitoring.grafana.com
-          kind: PodLogs
-          namespace: loki
-          jqPathExpressions:
-            - .spec.relabelings[]?.action
-            - .spec.relabelings[]?.sourceLabels
-            - .spec.relabelings[]?.replacement
-
-
