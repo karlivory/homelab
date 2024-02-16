@@ -2,6 +2,8 @@
 loki:
   minio:
     enabled: true
+    replicas: 2
+    drivesPerNode: 1
   loki:
     auth_enabled: false
   write:
