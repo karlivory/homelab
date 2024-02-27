@@ -1,2 +1,5 @@
 ---
-longhorn: {}
+longhorn:
+  # https://github.com/longhorn/longhorn/issues/6415
+  preUpgradeChecker:
+    jobEnabled: false
