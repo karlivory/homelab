@@ -1,5 +1,6 @@
 ---
 loki:
+  useTestSchema: true # TODO: use proper schema?
   minio:
     enabled: true
     replicas: 4
