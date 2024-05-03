@@ -35,9 +35,9 @@ kind: Ingress
 metadata:
   name: whoami-ingress
   annotations:
-    external-dns.alpha.kubernetes.io/target: ingress2.homelab.karlivory.dev
+    external-dns.alpha.kubernetes.io/target: ingress-wan.homelab.karlivory.dev
 spec:
-  ingressClassName: ingress2
+  ingressClassName: ingress-wan
   rules:
   - host: whoami.homelab.karlivory.dev
     http:

@@ -1,11 +1,11 @@
 ---
 apiVersion: v2
-name: ingress1
+name: ingress-lan
 version: 0.1.1
 
 dependencies:
   - name: ingress-nginx
     repository: https://kubernetes.github.io/ingress-nginx
     version: 4.10.1
-    alias: ingress1
+    alias: ingress-lan
 

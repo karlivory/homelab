@@ -1,14 +1,14 @@
 ---
-ingress1:
+ingress-wan:
   controller:
     extraArgs:
       default-ssl-certificate: cert-manager/wildcard-tls
       enable-ssl-passthrough: true
     ingressClassResource:
-      name: ingress1
-      default: true
+      name: ingress-wan
+      default: false
     service:
-      loadBalancerIP: "10.5.150.101"
+      loadBalancerIP: "10.5.150.102"
     resources:
       requests:
         cpu: 300m
