@@ -12,6 +12,8 @@ loki:
           index:
             prefix: index_
             period: 24h
+  chunksCache:
+    allocatedMemory: 1024
   minio:
     enabled: true
     replicas: 4
