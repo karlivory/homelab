@@ -1,21 +1,21 @@
 ---
 loki:
-  # https://grafana.com/docs/loki/latest/operations/storage/schema/
-  schemaConfig:
-    configs:
-      - from: 2024-04-01
-        object_store: s3
-        store: tsdb
-        schema: v13
-        index:
-          prefix: index_
-          period: 24h
+  loki:
+    auth_enabled: false
+    # https://grafana.com/docs/loki/latest/operations/storage/schema/
+    schemaConfig:
+      configs:
+        - from: 2024-04-01
+          object_store: s3
+          store: tsdb
+          schema: v13
+          index:
+            prefix: index_
+            period: 24h
   minio:
     enabled: true
     replicas: 4
     drivesPerNode: 1
-  loki:
-    auth_enabled: false
   write:
     persistence:
       size: 2Gi
