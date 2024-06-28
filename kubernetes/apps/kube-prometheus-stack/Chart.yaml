@@ -7,6 +7,6 @@ dependencies:
   - name: kube-prometheus-stack
     repository: https://prometheus-community.github.io/helm-charts
     # 58.3 bug: https://github.com/prometheus-community/helm-charts/pull/4503
-    version: 58.2.2
+    version: 60.5.0
     alias: kube-prometheus-stack
 
